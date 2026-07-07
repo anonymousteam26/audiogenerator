@@ -1,0 +1,25 @@
+// Uses SQLite locally by default so the project runs with zero external
+// setup. Swap the datasource to postgresql + DATABASE_URL for production
+// (e.g. a free Supabase or Neon Postgres instance) — same schema works.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Episode {
+  id          String   @id @default(uuid())
+  title       String
+  sourceName  String   // original uploaded filename
+  lengthMode  String   // "short" | "medium" | "long"
+  status      String   @default("pending") // pending | scripting | narrating | ready | failed
+  audioUrl    String?
+  durationSec Int?
+  errorMsg    String?
+  ipHash      String   // hashed IP, for anonymous rate limiting only
+  createdAt   DateTime @default(now())
+}
