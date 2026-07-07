@@ -1,9 +1,0 @@
-node_modules
-.next
-out
-.env
-.env.local
-prisma/dev.db
-public/audio/*.mp3
-.DS_Store
-npm-debug.log*
