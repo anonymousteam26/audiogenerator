@@ -11,7 +11,7 @@ export const runtime = "nodejs";
 export const maxDuration = 300; // this pipeline is slow; extend the function timeout
 
 const VALID_LENGTHS: LengthMode[] = ["short", "medium", "long"];
-const MAX_FILE_BYTES = 15 * 1024 * 1024; // 30MB upload cap
+const MAX_FILE_BYTES = 30 * 1024 * 1024; // 30MB upload cap
 
 export async function POST(req: NextRequest) {
   const ip = getClientIp(req.headers);
